@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CH Audio Match：为游戏音效设计的动态、音高运动与频谱特征迁移插件。">
+  <title>CH Audio Match | Motion Transfer for Game Audio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="noise"></div>
+  <header class="nav shell">
+    <a class="brand" href="#top" aria-label="CH Audio Match 首页">
+      <span class="mark" aria-hidden="true"><i>c</i><b>h</b></span>
+      <span class="brand-name">AUDIO MATCH</span>
+    </a>
+    <nav aria-label="主导航">
+      <a href="#features">功能</a>
+      <a href="#workflow">工作流</a>
+      <a href="#download">下载</a>
+    </nav>
+    <a class="nav-cta" href="downloads/CH-Audio-Match-0.2.0-Windows-x64-VST3.zip" download>免费下载</a>
+  </header>
+
+  <main id="top">
+    <section class="hero shell">
+      <div class="hero-copy reveal">
+        <div class="eyebrow"><span></span> MOTION TRANSFER FOR GAME AUDIO</div>
+        <h1>让声音继承<br><em>另一种运动。</em></h1>
+        <p>捕获参考音频的动态、音高运动与频谱特征，再将它们实时赋予新的游戏音效。</p>
+        <div class="hero-actions">
+          <a class="button primary" href="downloads/CH-Audio-Match-0.2.0-Windows-x64-VST3.zip" download>下载 Windows VST3</a>
+          <a class="button secondary" href="#workflow">查看工作方式</a>
+        </div>
+        <div class="meta"><span>VST3</span><span>Windows x64</span><span>REAPER Ready</span></div>
+      </div>
+
+      <div class="visual reveal" aria-label="CH Audio Match 插件视觉演示">
+        <div class="visual-top">
+          <div class="mini-brand"><span class="mark small"><i>c</i><b>h</b></span><strong>AUDIO MATCH</strong></div>
+          <span>v0.2</span>
+        </div>
+        <div class="analyzer">
+          <div class="analyzer-label">LIVE SPECTRUM</div>
+          <div class="grid"></div>
+          <canvas id="spectrum" aria-hidden="true"></canvas>
+          <div class="freq"><span>20</span><span>100</span><span>500</span><span>1k</span><span>5k</span><span>20k</span></div>
+          <div class="meter"><span>LEVEL</span><div class="meter-track"><i></i><b></b></div><small>R -12.4</small></div>
+          <div class="output"><span>OUTPUT</span><div class="output-track"><i></i></div><small>0.0 dB</small></div>
+        </div>
+        <div class="reference">
+          <div class="reference-head"><span>REFERENCE A</span><b>1.824 s</b></div>
+          <svg viewBox="0 0 760 90" preserveAspectRatio="none" aria-hidden="true">
+            <defs><linearGradient id="wave" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a8c9f0" stop-opacity=".55"/><stop offset="1" stop-color="#a8c9f0" stop-opacity=".12"/></linearGradient></defs>
+            <path class="wave-fill" d="M0 45 L30 45 40 43 47 48 52 40 58 51 64 38 71 49 78 42 90 45 105 44 112 29 120 61 127 20 134 65 141 27 148 58 156 34 164 54 173 37 183 52 195 39 207 51 220 41 237 49 252 42 270 48 290 43 315 47 340 44 370 46 405 44 440 47 480 44 525 46 570 45 620 46 670 44 715 46 760 45 L760 45 715 44 670 46 620 44 570 45 525 44 480 46 440 43 405 46 370 44 340 46 315 43 290 47 270 42 252 48 237 41 220 49 207 39 195 51 183 38 173 53 164 35 156 57 148 28 141 64 134 21 127 62 120 30 112 60 105 46 90 45 78 48 71 41 64 51 58 39 52 50 47 42 40 47 30 45 0 45 Z" fill="url(#wave)"/>
+            <path class="wave-line" d="M0 45 L30 45 40 43 47 48 52 40 58 51 64 38 71 49 78 42 90 45 105 44 112 29 120 61 127 20 134 65 141 27 148 58 156 34 164 54 173 37 183 52 195 39 207 51 220 41 237 49 252 42 270 48 290 43 315 47 340 44 370 46 405 44 440 47 480 44 525 46 570 45 620 46 670 44 715 46 760 45" fill="none" stroke="#b4d1f2" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <div class="visual-controls"><button>CAPTURE A</button><button class="active">TRANSFORM B</button><span>✓ DYNAMICS</span><span>✓ PITCH MOTION</span></div>
+      </div>
+    </section>
+
+    <section class="statement shell reveal">
+      <span class="section-number">01 / PURPOSE</span>
+      <h2>不是复制声音。<br>是迁移它的<em>表达方式。</em></h2>
+      <p>专为 whoosh、impact 与游戏音效设计，让素材 B 获得参考 A 的时间结构和运动感，同时保留自身质感。</p>
+    </section>
+
+    <section id="features" class="features shell">
+      <article class="feature-card wide reveal">
+        <span>01</span><h3>动态跟随</h3><p>分析参考素材的短时响度包络，让新素材精准继承力度、起伏和衰减。</p>
+        <div class="envelope"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </article>
+      <article class="feature-card reveal"><span>02</span><h3>Pitch Motion</h3><p>针对无稳定基频音效，迁移感知音高与明暗运动，而不是粗暴的人声式移调。</p><div class="orb"></div></article>
+      <article class="feature-card reveal"><span>03</span><h3>高精度频谱</h3><p>8192 点 FFT、512 显示点与时间平滑，清晰观察 20 Hz–20 kHz 的变化。</p><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+      <article class="feature-card reveal"><span>04</span><h3>安全输出</h3><p>处理后 RMS / Peak 电平监测与独立 Output 控制，避免 Transform 后过载。</p><div class="safe-meter"><i></i></div></article>
+    </section>
+
+    <section id="workflow" class="workflow shell reveal">
+      <div class="workflow-head"><span class="section-number">02 / WORKFLOW</span><h2>三步，完成声音迁移。</h2></div>
+      <div class="steps">
+        <article><b>01</b><div><h3>Capture A</h3><p>播放参考素材，在插件中捕获波形与运动特征。</p></div></article>
+        <article><b>02</b><div><h3>Load B</h3><p>将目标素材放入同一轨道，并选择动态或 Pitch Motion。</p></div></article>
+        <article><b>03</b><div><h3>Transform B</h3><p>一键转换，实时监听并用 Global Sampler 捕获结果。</p></div></article>
+      </div>
+    </section>
+
+    <section id="download" class="download shell reveal">
+      <div><span class="section-number">03 / DOWNLOAD</span><h2>赋予素材新的运动。</h2><p>CH Audio Match 0.2.0 · Windows x64 · VST3</p></div>
+      <a class="download-button" href="downloads/CH-Audio-Match-0.2.0-Windows-x64-VST3.zip" download><span>免费下载</span><small>ZIP · 2.9 MB</small></a>
+    </section>
+  </main>
+
+  <footer class="shell"><div class="brand"><span class="mark small"><i>c</i><b>h</b></span><span class="brand-name">AUDIO MATCH</span></div><p>Designed for game audio motion.</p><span>© 2026 CH Audio</span></footer>
+  <script src="script.js"></script>
+</body>
+</html>
